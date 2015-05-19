@@ -44,8 +44,6 @@ class ArrayExamples
 
 		puts "first array:  #{first_array}"
 		puts "second array: #{second_array}"
-
-		puts "-----now alter first array --"
 	end
 
 end
