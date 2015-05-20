@@ -8,29 +8,56 @@
 		require './array_ref.rb'
 		require './recursive_factorial.rb'
 		require './while-loop.rb'
+		require './stack_ruby.rb'
 
-		def user_methods_display(function_call_hash={})
+		def reformat_method_names(class_name, method_name, counter)
+			 	string_method = method_name.to_s
+				roll_an_instance = class_name.new
+				argument_count = roll_an_instance.method(method_name).arity
+				arg_names = roll_an_instance.method(method_name).parameters
+				arg_string = ""
+				holding_array = []
+				arg_names.each do |arg_array|
+					if arg_names.length == 1
+						holding_array << arg_array[1]
+					else
+						holding_array << arg_array[1]
+
+					end
+					arg_string = holding_array.join(", ")
+				end
+
+			 	puts "  #{counter}: #{string_method}(#{arg_string})"
+		end
+
+		def user_methods_display(function_call_hash)
 			function_call_hash.each do |class_index, class_method_array|
-				puts class_method_array[0].keys[0]
+				puts "-"*90
+				puts "#{class_method_array[0].keys[0]} "\
+				     "has #{class_method_array.length} methods"
+				puts
+				counter = 1
 				class_method_array.each do |class_method_hash|
 					class_method_hash.each do |class_name, method_name|
-						test_run = class_name.new
-						test_run.send method_name
+						reformat_method_names(class_name, method_name, counter)
+			# class_name.new.send method_name
+						counter += 1
 					end
 				end
 			end
 		end
 
-		def method_pluralize(method_number_size=1)
-			if (method_number_size == 1)
-				method_puralize = "method"
-			else
-				method_puralize = "methods"
-			end
-			method_puralize
+		def method_pluralize(method_number_size)
+
+				if (method_number_size == 1)
+					method_puralize = "method"
+				elsif (method_number_size != 1)
+					method_puralize = "methods"
+				end
+				method_puralize
 		end
 
-		def class_method_array_builder(working_name=[], class_name="")
+		def class_method_array_builder(working_name, class_name)
 			method_array = []
 			working_name.each do |method_names|
 				class_method = {class_name => method_names}
@@ -39,7 +66,7 @@
 			method_array
 		end
 
-		def build_user_methods(local_classes=[])
+		def build_user_methods(local_classes)
 			function_call_hash = {}
 			class_counter = 0
 			local_classes.each do |class_name|
@@ -58,5 +85,6 @@
 
  master_function_hash = MasterMethods.new.build_user_methods(@postload)
 # puts master_function_hash
+
 
 	private
