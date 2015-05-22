@@ -7,14 +7,33 @@ class BaseConverter
 			current_stack.push(current_number % base_num)
 			current_number = (current_number/base_num).floor
 		end
-		converted = 0
+		converted = ""
 		while (current_stack.count > 0)
-			converted += current_stack.pop
-			puts converted
+			converted += current_stack.pop.to_s
+
 		end
-		converted
+		converted.to_i
+	end
+
+	def base_no_stack(current_number, base_num)
+		while(current_number > 0) do
+			string_holder ||= ""
+			hold = current_number % base_num
+			string_holder += hold.to_s
+			current_number =  (current_number/base_num).floor
+		end
+		 string_holder.reverse.to_i
 	end
 
 end
 
-p BaseConverter.new.base_calculate(10, 8)
+# p BaseConverter.new.base_calculate(10, 8)
+start1 = Time.now
+p BaseConverter.new.base_calculate(11232123459902348923489283412312312312, 8)
+stop1 = Time.now
+puts stop1-start1
+
+start2 = Time.now
+p BaseConverter.new.base_no_stack(11232123459902348923489283412312312312, 8)
+stop2 = Time.now
+puts stop2-start2
