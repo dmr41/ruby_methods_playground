@@ -29,11 +29,11 @@ end
 
 # p BaseConverter.new.base_calculate(10, 8)
 start1 = Time.now
-p BaseConverter.new.base_calculate(11232123459902348923489283412312312312, 8)
+p BaseConverter.new.base_calculate(11232123459902348923489283412312312312, 2)
 stop1 = Time.now
 puts stop1-start1
 
 start2 = Time.now
-p BaseConverter.new.base_no_stack(11232123459902348923489283412312312312, 8)
+p BaseConverter.new.base_no_stack(11232123459902348923489283412312312312, 2)
 stop2 = Time.now
 puts stop2-start2

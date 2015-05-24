@@ -9,8 +9,16 @@ class Queue
 		@queue_data.push(new_element)
 	end
 
-	def remove_from_queue
+	def remove_from_front_of_queue
 		@queue_data.shift
+	end
+
+	def remove_from_back_of_queue
+		@queue_data.pop
+	end
+
+	def move_to_front_of_line(line_cutters)
+		@queue_data.unshift(line_cutters)
 	end
 
 	def front_of_queue
@@ -38,6 +46,8 @@ class Queue
 		end
 	end
 
+
+
 end
 
 jimmy = Queue.new
@@ -45,18 +55,18 @@ jimmy.add_to_queue("Bobert")
 jimmy.add_to_queue("Chelsea")
 jimmy.add_to_queue("Victoria")
 
-puts jimmy.list_queue
+puts jimmy.remove_from_back_of_queue
 
 puts jimmy.front_of_queue
 puts jimmy.back_of_queue
-
-puts jimmy.remove_from_queue
-puts jimmy.remove_from_queue
+puts jimmy.remove_from_front_of_queue
+puts jimmy.remove_from_front_of_queue
 
 puts jimmy.list_queue
+jimmy.move_to_front_of_line("JOEY")
 
 puts jimmy.front_of_queue
 puts jimmy.back_of_queue
 puts jimmy.is_queue_empty
-puts jimmy.remove_from_queue
+puts jimmy.remove_from_front_of_queue
 puts jimmy.is_queue_empty
