@@ -40,6 +40,7 @@ describe "integers_only_array method" do
 		expect(array_reference.first_array).to eq([])
 		number_array = array_reference.integers_only_array([1, 2, 3, 4])
 		expect(array_reference.first_array).to eq([1, 2, 3, 4])
+
 	end
 
 	it "fails to set first_array if any values in input are non-integers" do
@@ -85,8 +86,30 @@ describe "set_array method" do
 
 end
 
-	# it "second array references first array" do
-	# 	arrays_reference = ArrayExamples.new
-	# 	arrays_reference.set_array([1, 2, 3, 4, 5])
-	# 	expect(arrays_reference.second_array_referenced).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-	# end
+##
+describe "direct_array_referencing method" do
+
+	it "returns the added referenced added value" do
+		array_reference = ArrayExamples.new
+		re_referencing = array_reference.direct_array_referencing([1, 2, 3])
+		expect(re_referencing).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+		re_referencing = array_reference.direct_array_referencing([1])
+		expect(re_referencing).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
+		re_referencing = array_reference.direct_array_referencing([])
+		expect(re_referencing).to eq(nil)
+	end
+
+end
+
+##
+describe "new_array_not_referenced" do
+
+	it "changes array values separate from intial array" do
+		array_reference = ArrayExamples.new
+		unreferenced = array_reference.new_array_not_referenced([1, 2, 3, 4])
+		expect(array_reference.second_array).to match_array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+		expect(array_reference.first_array).to match_array([1, 2, 3, 4])
+
+	end
+
+end

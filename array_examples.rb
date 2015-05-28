@@ -1,8 +1,9 @@
 class ArrayExamples
-	attr_accessor :first_array
+	attr_accessor :first_array, :second_array
 
 	def initialize
 		@first_array = []
+		@second_array = []
 	end
 
 	def set_array(first_array=[])
@@ -28,35 +29,28 @@ class ArrayExamples
 		end
 	end
 
-	def second_array_referenced
-		second_array = @first_array
-		for i in 0..4
-			second_array << second_array.last + 1
-		end
-		for i in 0..2
-			first_array << first_array.last + 1
-		end
-		second_array
+	def direct_array_referencing(array_value)
+		unless(set_array(array_value).empty?)
+			puts "I am not empty"
+			@second_array = set_array(array_value)
+			for i in 0..4
+				@second_array << @second_array.last + 1
+				end
+				for i in 0..2
+					@first_array << @first_array.last + 1
+				end
+				@second_array
+			end
 	end
 
-	def newwing_up_arrays_prevents_referencing
-		puts "--"*30
-		puts "--"*30
-		puts "Now with Array.new for the second_array declaration!!!!!!"
-
-		first_array = [1,2,3,4,5]
-		second_array = Array.new(first_array)
-		puts "first array:  #{first_array}"
-		puts "second array: #{second_array}"
-		puts "-----now alter second array --"
-
+	def new_array_not_referenced(array_value)
+		@first_array = set_array(array_value)
+		f_array = @first_array
+		@second_array = Array.new(f_array)
 		for i in 0..4
-			second_array << second_array.last + 1
+			@second_array << @second_array.last + 1
 		end
-		to_print = "second array: #{second_array}"
-		puts "first array:  #{first_array}"
-		puts to_print
-		to_print
+		@second_array
 	end
 
 end
