@@ -5,7 +5,7 @@
 	@preload = ObjectSpace.each_object(Class).to_a
 
 	class MasterMethods
-		require './array_ref.rb'
+		require './array_examples.rb'
 		require './recursive_factorial.rb'
 		require './while-loop.rb'
 		require './stack_ruby.rb'
