@@ -1,7 +1,6 @@
 require 'spec_helper'
 require './array_examples'
 
-##
 describe "evaluate_array method" do
 
 	it "returns array if input value an array" do
@@ -32,7 +31,6 @@ describe "evaluate_array method" do
 
 end
 
-##
 describe "integers_only_array method" do
 
 	it "sets the first_array instance to the input integer array" do
@@ -53,7 +51,6 @@ describe "integers_only_array method" do
 
 end
 
-##
 describe "set_array method" do
 
 	it "returns empty array by default" do
@@ -86,7 +83,6 @@ describe "set_array method" do
 
 end
 
-##
 describe "direct_array_referencing method" do
 
 	it "returns the added referenced added value" do
@@ -101,7 +97,6 @@ describe "direct_array_referencing method" do
 
 end
 
-##
 describe "new_array_not_referenced" do
 
 	it "changes array values separate from intial array" do
@@ -109,7 +104,6 @@ describe "new_array_not_referenced" do
 		unreferenced = array_reference.new_array_not_referenced([1, 2, 3, 4])
 		expect(array_reference.second_array).to match_array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 		expect(array_reference.first_array).to match_array([1, 2, 3, 4])
-
 	end
 
 end
